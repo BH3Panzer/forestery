@@ -19,18 +19,18 @@ func skipLines(n int) {
 }
 
 func main_menu() {
-	screen.MoveTopLeft()
-	fmt.Println("Forestery v" + VERSION)
-	fmt.Println("*****************")
-	skipLines(5)
-	fmt.Println("1) Nouvelle partie")
-	fmt.Printf("Choix : ")
-	var choice int
-	fmt.Scanln(&choice)
-	if choice == 1 {
+    screen.MoveTopLeft()
+    fmt.Println("Forestery v" + VERSION)
+    fmt.Println("*****************")
+    skipLines(5)
+    fmt.Println("1) Nouvelle partie")
+    fmt.Printf("Choix : ")
+    var choice int
+    fmt.Scanln(&choice)
+    if choice == 1 {
 		STATE = "new_game_menu_number"
-	}
-	screen.Clear()
+    }
+    screen.Clear()
 }
 
 func new_game_menu_number() int {
@@ -90,5 +90,4 @@ func main() {
 		generateNewGame(LocNumber)
 	}
 }
-
 
