@@ -60,9 +60,6 @@ func generateNewGame(nb int) {
 		}
 		locations[i] = loc
 	}
-	for _, loc := range locations {
-		fmt.Println(loc)
-	}
 }
 
 func main() {
