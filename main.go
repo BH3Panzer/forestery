@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 import "github.com/inancgumus/screen"
+import "math/rand"
+import "time"
 
 var VERSION string = "0.0.1"
 
@@ -51,14 +53,29 @@ type Location struct {
 	typ string
 }
 
+func getRandomNumber(nb int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(nb)
+}
+
+func getRandomType() string {
+	typeList := [...]string{"mou", "mea", "val", "mar"}
+	choice := getRandomNumber(4)
+	return typeList[choice]
+}
+
 func generateNewGame(nb int) {
 	locations := make([]Location, nb)
 	for i := 0; i < nb; i++ {
 		loc := Location{
 			id: i,
 			name: "",
+			typ: getRandomType(),
+			height: getRandomNumber(500),
+			temp: getRandomNumber(40),
 		}
 		locations[i] = loc
+		fmt.Println(loc)
 	}
 }
 
