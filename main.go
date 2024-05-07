@@ -19,18 +19,18 @@ func skipLines(n int) {
 }
 
 func main_menu() {
-    screen.MoveTopLeft()
-    fmt.Println("Forestery v" + VERSION)
-    fmt.Println("*****************")
-    skipLines(5)
-    fmt.Println("1) Nouvelle partie")
-    fmt.Printf("Choix : ")
-    var choice int
-    fmt.Scanln(&choice)
-    if choice == 1 {
+	screen.MoveTopLeft()
+	fmt.Println("Forestery v" + VERSION)
+	fmt.Println("*****************")
+	skipLines(5)
+	fmt.Println("1) Nouvelle partie")
+	fmt.Printf("Choix : ")
+	var choice int
+	fmt.Scanln(&choice)
+	if choice == 1 {
 		STATE = "new_game_menu_number"
-    }
-    screen.Clear()
+	}
+	screen.Clear()
 }
 
 func new_game_menu_number() int {
@@ -46,11 +46,11 @@ func new_game_menu_number() int {
 }
 
 type Location struct {
-	id int
-	name string
-	temp int
+	id     int
+	name   string
+	temp   int
 	height int
-	typ string
+	typ    string
 }
 
 func getRandomNumber(nb int) int {
@@ -64,15 +64,29 @@ func getRandomType() string {
 	return typeList[choice]
 }
 
+func generateName(lenght int) string {
+	cons := [...]string{"B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Z"}
+	voy := [...]string{"A", "E", "I", "O", "U", "Y"}
+	var name string
+	var choice int
+	for i := 0; i < lenght; i++ {
+		choice = getRandomNumber(20)
+		name = name + string(cons[choice])
+		choice = getRandomNumber(6)
+		name = name + string(voy[choice])
+	}
+	return name
+}
+
 func generateNewGame(nb int) {
 	locations := make([]Location, nb)
 	for i := 0; i < nb; i++ {
 		loc := Location{
-			id: i,
-			name: "",
-			typ: getRandomType(),
+			id:     i,
+			name:   generateName(3),
+			typ:    getRandomType(),
 			height: getRandomNumber(500),
-			temp: getRandomNumber(40),
+			temp:   getRandomNumber(40),
 		}
 		locations[i] = loc
 		fmt.Println(loc)
@@ -90,4 +104,3 @@ func main() {
 		generateNewGame(LocNumber)
 	}
 }
-
