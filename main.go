@@ -1,15 +1,18 @@
 package main
 
 import "fmt"
-import "github.com/inancgumus/screen"
 import "math/rand"
 import "time"
+import "os/exec"
+import "os"
 
 var VERSION string = "0.0.1"
 
 var STATE string = "main_menu"
 
 var LocNumber int
+
+var PlayerName string
 
 func skipLines(n int) {
 	for i := 0; i < n; i++ {
@@ -19,7 +22,10 @@ func skipLines(n int) {
 }
 
 func main_menu() {
-	screen.MoveTopLeft()
+	clear := exec.Command("clear")
+	clear.Stdout = os.Stdout
+	clear.Run()
+	fmt.Println("lol")
 	fmt.Println("Forestery v" + VERSION)
 	fmt.Println("*****************")
 	skipLines(5)
@@ -30,19 +36,32 @@ func main_menu() {
 	if choice == 1 {
 		STATE = "new_game_menu_number"
 	}
-	screen.Clear()
 }
 
 func new_game_menu_number() int {
-	screen.MoveTopLeft()
+	clear := exec.Command("clear")
+	clear.Stdout = os.Stdout
+	clear.Run()
 	fmt.Println("Creer une nouvelle partie")
 	fmt.Println("*****************")
 	skipLines(5)
 	fmt.Printf("Nombre de lieux : ")
 	var choice int
 	fmt.Scanln(&choice)
-	screen.Clear()
 	return choice
+}
+
+func set_name_menu() string {
+	clear := exec.Command("clear")
+	clear.Stdout = os.Stdout
+	clear.Run()
+	fmt.Println("Creer une nouvelle partie")
+	fmt.Println("*****************")
+	skipLines(5)
+	fmt.Printf("Nom du joueur : ")
+	var name string
+	fmt.Scanln(&name)
+	return name
 }
 
 type Location struct {
@@ -51,6 +70,14 @@ type Location struct {
 	temp   int
 	height int
 	typ    string
+}
+
+type Player struct {
+	name   string
+	pos    int
+	pv     int
+	pa     int
+	shield int
 }
 
 func getRandomNumber(nb int) int {
@@ -78,7 +105,7 @@ func generateName(lenght int) string {
 	return name
 }
 
-func generateNewGame(nb int) {
+func generateNewGame(nb int, name string) {
 	locations := make([]Location, nb)
 	for i := 0; i < nb; i++ {
 		loc := Location{
@@ -91,16 +118,26 @@ func generateNewGame(nb int) {
 		locations[i] = loc
 		fmt.Println(loc)
 	}
+	player := Player{
+		name:   name,
+		pos:    int(nb / 2),
+		pv:     100,
+		pa:     0,
+		shield: 0,
+	}
+	fmt.Println(player)
 }
 
 func main() {
-	screen.Clear()
+	clear := exec.Command("clear")
+	clear.Stdout = os.Stdout
+	clear.Run()
 	if STATE == "main_menu" {
 		main_menu()
 	}
 	if STATE == "new_game_menu_number" {
 		LocNumber = new_game_menu_number()
-		STATE = "generate_new_game"
-		generateNewGame(LocNumber)
+		PlayerName = set_name_menu()
+		generateNewGame(LocNumber, PlayerName)
 	}
 }
