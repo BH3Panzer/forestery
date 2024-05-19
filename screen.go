@@ -3,6 +3,7 @@ package main
 import "os"
 import "os/exec"
 import "runtime"
+import "fmt"
 
 func Clear() {
 	if runtime.GOOS == "windows" {
@@ -13,5 +14,7 @@ func Clear() {
 		clear := exec.Command("clear")
 		clear.Stdout = os.Stdout
 		clear.Run()
+	} else {
+		fmt.Println("Platform unsupported :(")
 	}
 }
