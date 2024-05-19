@@ -3,8 +3,6 @@ package main
 import "fmt"
 import "math/rand"
 import "time"
-import "os/exec"
-import "os"
 
 var VERSION string = "0.0.1"
 
@@ -22,9 +20,7 @@ func skipLines(n int) {
 }
 
 func main_menu() {
-	clear := exec.Command("clear")
-	clear.Stdout = os.Stdout
-	clear.Run()
+	Clear()
 	fmt.Println("lol")
 	fmt.Println("Forestery v" + VERSION)
 	fmt.Println("*****************")
@@ -39,9 +35,7 @@ func main_menu() {
 }
 
 func new_game_menu_number() int {
-	clear := exec.Command("clear")
-	clear.Stdout = os.Stdout
-	clear.Run()
+	Clear()
 	fmt.Println("Creer une nouvelle partie")
 	fmt.Println("*****************")
 	skipLines(5)
@@ -52,9 +46,7 @@ func new_game_menu_number() int {
 }
 
 func set_name_menu() string {
-	clear := exec.Command("clear")
-	clear.Stdout = os.Stdout
-	clear.Run()
+	Clear()
 	fmt.Println("Creer une nouvelle partie")
 	fmt.Println("*****************")
 	skipLines(5)
@@ -129,9 +121,7 @@ func generateNewGame(nb int, name string) {
 }
 
 func main() {
-	clear := exec.Command("clear")
-	clear.Stdout = os.Stdout
-	clear.Run()
+	Clear()
 	if STATE == "main_menu" {
 		main_menu()
 	}
