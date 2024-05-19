@@ -6,7 +6,7 @@ import "runtime"
 
 func getRightCommand() string {
 	if runtime.GOOS == "windows" {
-		return "cls"
+		return "cmd /c cls"
 	} else if runtime.GOOS == "linux" {
 		return "clear"
 	} else {
