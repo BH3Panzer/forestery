@@ -22,7 +22,7 @@ func skipLines(n int) {
 func main_menu() {
 	Clear()
 	fmt.Println("lol")
-	fmt.Println("\033[30m\033[42mForestery v" + VERSION + "\033[0m")
+	fmt.Println(GetAnsiColor("green") + "Forestery v" + VERSION + GetAnsiColor(""))
 	fmt.Println("*****************")
 	skipLines(5)
 	fmt.Println("1) Nouvelle partie")
@@ -108,7 +108,9 @@ func generateNewGame(nb int, name string) {
 			temp:   getRandomNumber(40),
 		}
 		locations[i] = loc
+		fmt.Printf(GetAnsiColor("yellow"))
 		fmt.Println(loc)
+		fmt.Printf(GetAnsiColor(""))
 	}
 	player := Player{
 		name:   name,
@@ -117,7 +119,9 @@ func generateNewGame(nb int, name string) {
 		pa:     0,
 		shield: 0,
 	}
+	fmt.Printf(GetAnsiColor("yellow"))
 	fmt.Println(player)
+	fmt.Printf(GetAnsiColor(""))
 }
 
 func main() {
