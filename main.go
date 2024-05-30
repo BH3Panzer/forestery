@@ -22,7 +22,7 @@ func skipLines(n int) {
 func main_menu() {
 	Clear()
 	fmt.Println("lol")
-	fmt.Println("Forestery v" + VERSION)
+	fmt.Println("\033[30m\033[42mForestery v" + VERSION + "\033[0m")
 	fmt.Println("*****************")
 	skipLines(5)
 	fmt.Println("1) Nouvelle partie")
