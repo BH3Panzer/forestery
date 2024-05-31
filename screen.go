@@ -19,6 +19,28 @@ func Clear() {
 	}
 }
 
+func GetAnsiColorBack(color string) string {
+	if color == "black" {
+		return "\033[40m"
+	} else if color == "red" {
+		return "\033[41m"
+	} else if color == "green" {
+		return "\033[42m"
+	} else if color == "yellow" {
+		return "\033[43m"
+	} else if color == "blue" {
+		return "\033[44m"
+	} else if color == "magenta" {
+		return "\033[45m"
+	} else if color == "cyan" {
+		return "\033[46m"
+	} else if color == "white" {
+		return "\033[47m"
+	} else {
+		return "\033[0m"
+	}
+}
+
 func GetAnsiColor(color string) string {
 	if color == "black" {
 		return "\033[30m"

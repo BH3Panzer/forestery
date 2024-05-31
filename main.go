@@ -22,7 +22,7 @@ func skipLines(n int) {
 func main_menu() {
 	Clear()
 	fmt.Println("lol")
-	fmt.Println(GetAnsiColor("green") + "Forestery v" + VERSION + GetAnsiColor(""))
+	fmt.Println(GetAnsiColorBack("green") + GetAnsiColor("black") + "Forestery v" + VERSION + GetAnsiColor(""))
 	fmt.Println("*****************")
 	skipLines(5)
 	fmt.Println("1) Nouvelle partie")
