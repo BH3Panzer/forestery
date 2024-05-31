@@ -62,3 +62,11 @@ func GetAnsiColor(color string) string {
 		return "\033[0m"
 	}
 }
+
+func GetAnsiRevert() string {
+	return "\033[7m"
+}
+
+func GetAnsiBlink() string {
+	return "\033[5m"
+}
