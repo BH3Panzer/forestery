@@ -1,10 +1,12 @@
 package main
 
-import "fmt"
-import "math/rand"
-import "time"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-var VERSION string = "0.0.1"
+var VERSION string = "0.0.0.1"
 
 var STATE string = "main_menu"
 
@@ -21,7 +23,6 @@ func skipLines(n int) {
 
 func main_menu() {
 	Clear()
-	fmt.Println("lol")
 	fmt.Println(GetAnsiColorBack("green") + GetAnsiColor("black") + "Forestery v" + VERSION + GetAnsiColor(""))
 	fmt.Println("*****************")
 	skipLines(5)
