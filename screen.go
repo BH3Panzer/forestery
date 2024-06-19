@@ -1,9 +1,12 @@
 package main
 
-import "os"
-import "os/exec"
-import "runtime"
-import "fmt"
+import (
+	"os"
+	"os/exec"
+	"runtime"
+	"fmt"
+)
+
 
 func Clear() {
 	if runtime.GOOS == "windows" {
