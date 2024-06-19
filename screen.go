@@ -1,12 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"runtime"
-	"fmt"
+	"time"
 )
-
 
 func Clear() {
 	if runtime.GOOS == "windows" {
@@ -20,6 +20,23 @@ func Clear() {
 	} else {
 		fmt.Println("Platform unsupported :(")
 	}
+}
+
+func StartLoadingAnimation() {
+	for {
+		LoadingAnimationLoop()
+	}
+}
+
+func LoadingAnimationLoop() {
+	fmt.Println("- Loading..." + "\r")
+	time.Sleep(50 * time.Millisecond)
+	fmt.Println("\\ Loading..." + "\r")
+	time.Sleep(50 * time.Millisecond)
+	fmt.Println("| Loading..." + "\r")
+	time.Sleep(50 * time.Millisecond)
+	fmt.Println("/ Loading..." + "\r")
+	time.Sleep(50 * time.Millisecond)
 }
 
 func GetAnsiColorBack(color string) string {
